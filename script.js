@@ -33,14 +33,14 @@ async function send_email() {
         const templateCompiled = hogan.compile(templateStyled);
         const templateRendered = templateCompiled.render(
             {
-                name: "Hugo Richard"
+                name: "your name"
             });
         const emailData = {
             to: [
-                "hrichard206@gmail.Com"
+                "youremail@test.com"
             ],
-            from: 'Maison Hochard',
-            subject: "Test",
+            from: 'your name',
+            subject: "test",
             html: templateRendered
         };
         await transporter.sendMail(emailData);
@@ -51,7 +51,7 @@ async function send_email() {
 
 // request exemple
 /*async function getSitesList(connection) {
-    const [rows] = await connection.execute('SELECT id, Login FROM w2r_central.S_Account_Site WHERE enabled = 1');
+    const [rows] = await connection.execute('SELECT id, login FROM table WHERE enabled = 1');
     return rows;
 }*/
 
@@ -59,12 +59,12 @@ async function launchScript() {
     // in case of db connection
     /*const connection = await mysql.createConnection({
         host: (program.env && program.env === "production")
-            ? '10.5.0.4'
+            ? 'your_ip'
             : ((program.env && program.env === "preprod")
-                ? '10.5.0.104'
+                ? 'your_ip'
                 : 'localhost'),
         user: 'master',
-        password: 'harmony33893389'
+        password: 'password'
     });*/
     await send_email()
 }
